@@ -10,7 +10,8 @@ from io import StringIO
 # Data Scrapping
 
 chrome_options = webdriver.ChromeOptions()
-chrome_options.add_experimental_option('detach', True)
+chrome_options.add_argument('user-agent=StudentDataProject/1.0 (Educational Capstone Project, contact: camiloochoa@yahoo.com)')
+# chrome_options.add_experimental_option('detach', True)
 
 driver = webdriver.Chrome(options=chrome_options)
 
@@ -18,7 +19,8 @@ URL = ('https://www.timeanddate.com/weather/colombia/bogota/historic')
 
 driver.get(URL)
 
-sleep(1)
+#pauses the information retrieval, both as an etiquette piece and to let the page load the information.
+sleep(2)
 
 #dropdown element selection
 dropdown = driver.find_element(By.ID, 'month')
@@ -27,11 +29,10 @@ selection = Select(dropdown)
 #how many options does the dropdown has
 months = len(selection.options)
 
-
 weather_data = []
 
-# harcoded 6 just for testing, change to months when finished
-for month in range(6):
+# harcoded number just for testing, change to months when finished
+for month in range(10):
     #load the dropdown on each run
     dropdown = driver.find_element(By.ID, "month")
     selection = Select(dropdown)
