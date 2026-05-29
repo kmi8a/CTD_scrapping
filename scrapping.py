@@ -32,7 +32,7 @@ months = len(selection.options)
 weather_data = []
 
 # harcoded number just for testing, change to months when finished
-for month in range(10):
+for month in range(6):
     #load the dropdown on each run
     dropdown = driver.find_element(By.ID, "month")
     selection = Select(dropdown)

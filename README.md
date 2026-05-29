@@ -1,2 +1,2 @@
 # CTD_scrapping
-web scrapping exercise for the python essentials class - CTD 2026
+Educational project to apply web scrapping, data cleaning, data transformation and data visualization techniques learned on the python essentials class - CTD 2026.
