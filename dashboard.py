@@ -27,15 +27,18 @@ selected_types = st.sidebar.multiselect('Select the Insight to Visualize', df['I
 # Filter the data based on the user's selection
 filtered_df = df[df['Insight'].isin(selected_types)]
 
+# Rename 'Value' as 'Temperature' for Visualization purposes 
+filtered_df = filtered_df.rename(columns={'Value': 'Temperature'})
+
 # Visualization 1 - Temperature Trends
 st.subheader('Temperature Trends')
-fig_line = px.line(filtered_df, x='Date', y='Value', color='Insight', color_discrete_map=color_map, markers=True)
+fig_line = px.line(filtered_df, x='Date', y='Temperature', color='Insight', color_discrete_map=color_map, markers=True)
 fig_line.update_layout(yaxis_title='Temperature (°F)')
 st.plotly_chart(fig_line, use_container_width=True)
 
 # Visualization 2 - Histogram
 st.subheader("Distribution of Temperatures (Frequency)")
-fig_hist = px.histogram(filtered_df, x='Value', color='Insight', nbins=20, color_discrete_map=color_map)
+fig_hist = px.histogram(filtered_df, x='Temperature', color='Insight', nbins=20, color_discrete_map=color_map)
 fig_hist.update_layout(xaxis_title='Temperature (°F)')
 st.plotly_chart(fig_hist, use_container_width=True)
 
@@ -44,7 +47,7 @@ st.plotly_chart(fig_hist, use_container_width=True)
 df['Month'] = df['Date'].dt.month_name()
 df['Year'] = df['Date'].dt.year
 
-pivot_df = df.pivot_table(values='Value', index='Month', columns='Year', aggfunc='mean')
+pivot_df = df.pivot_table(values='Temperature', index='Month', columns='Year', aggfunc='mean')
 
 st.subheader("Temperature Seasonality Heatmap")
 fig_heat = px.imshow(pivot_df, labels=dict(x="Year", y="Month", color="Temp (°F)"), color_continuous_scale="RdBu_r")
