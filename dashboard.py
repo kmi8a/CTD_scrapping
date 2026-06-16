@@ -47,7 +47,7 @@ st.plotly_chart(fig_hist, use_container_width=True)
 df['Month'] = df['Date'].dt.month_name()
 df['Year'] = df['Date'].dt.year
 
-pivot_df = df.pivot_table(values='Temperature', index='Month', columns='Year', aggfunc='mean')
+pivot_df = df.pivot_table(values='Value', index='Month', columns='Year', aggfunc='mean')
 
 st.subheader("Temperature Seasonality Heatmap")
 fig_heat = px.imshow(pivot_df, labels=dict(x="Year", y="Month", color="Temp (°F)"), color_continuous_scale="RdBu_r")
