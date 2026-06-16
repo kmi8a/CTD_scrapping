@@ -14,7 +14,7 @@ df = pd.read_sql("SELECT * FROM bogota;", conn)
 df['Date'] = pd.to_datetime(df['Date'])
 
 # Title
-st.title('Bogota Weather Dashboard')
+st.title('Bogota, Colombia - Weather Dashboard')
 st.text("Comparing data from Sept 2009 to May 2026") 
 
 # Color mapping
