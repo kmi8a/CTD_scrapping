@@ -36,7 +36,7 @@ st.plotly_chart(fig_line, use_container_width=True)
 # Visualization 2 - Histogram
 st.subheader("Distribution of Temperatures (Frequency)")
 fig_hist = px.histogram(filtered_df, x='Value', color='Insight', nbins=20, color_discrete_map=color_map)
-fig_line.update_layout(yaxis_title='Temperature (°F)')
+fig_hist.update_layout(yaxis_title='Temperature (°F)')
 st.plotly_chart(fig_hist, use_container_width=True)
 
 #Visualization 3 - Heatmap
