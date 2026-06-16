@@ -29,7 +29,7 @@ filtered_df = df[df['Insight'].isin(selected_types)]
 
 # Visualization 1 - Temperature Trends
 st.subheader('Temperature Trends')
-fig_line = px.line(filtered_df, x='Date', y='Value (°F)', color='Insight', color_discrete_map=color_map, markers=True)
+fig_line = px.line(filtered_df, x='Date', y='Value', color='Insight', color_discrete_map=color_map, markers=True)
 st.plotly_chart(fig_line, use_container_width=True)
 
 # Visualization 2 - Histogram
@@ -38,6 +38,7 @@ fig_hist = px.histogram(filtered_df, x='Value', color='Insight', nbins=20, color
 st.plotly_chart(fig_hist, use_container_width=True)
 
 #Visualization 3 - Heatmap
+
 df['Month'] = df['Date'].dt.month_name()
 df['Year'] = df['Date'].dt.year
 
